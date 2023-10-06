@@ -56,6 +56,6 @@ export const ChatContextProvider = ({ fileId, children }: Props) => {
                 handleInputChange,
                 isLoading,
             }}
-        ></ChatContext.Provider>
+        >{children}</ChatContext.Provider>
     );
 };

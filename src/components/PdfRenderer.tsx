@@ -3,11 +3,11 @@
 import { cn } from '@/lib/utils';
 import { zodResolver } from '@hookform/resolvers/zod';
 import {
-  ChevronDown,
-  ChevronUp,
-  Loader2,
-  RotateCw,
-  Search,
+    ChevronDown,
+    ChevronUp,
+    Loader2,
+    RotateCw,
+    Search,
 } from 'lucide-react';
 import { FC, useState } from 'react';
 import { useForm } from 'react-hook-form';
@@ -20,10 +20,10 @@ import { z } from 'zod';
 import PdfFullscreen from './PdfFullscreen';
 import { Button } from './ui/button';
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuItem,
+    DropdownMenuTrigger,
 } from './ui/dropdown-menu';
 import { Input } from './ui/input';
 import { useToast } from './ui/use-toast';
@@ -65,7 +65,7 @@ const PdfRenderer: FC<PdfRendererProps> = ({ url }) => {
         resolver: zodResolver(CustomPageValidator),
     });
 
-    const { width, ref } = useResizeDetector();
+    const { width, ref, height } = useResizeDetector();
 
     const handlePageSubmit = ({ page }: TCustomPageValidator) => {
         setCurrentPage(Number(page));
@@ -177,9 +177,9 @@ const PdfRenderer: FC<PdfRendererProps> = ({ url }) => {
             <div className="flex-1 w-full max-h-screen">
                 <SimpleBar
                     autoHide={false}
-                    className="max-h-[calc(100vh - 10rem)]"
+                    className="max-h-[calc(100vh-10rem)]"
                 >
-                    <div ref={ref}>
+                    <div ref={ref} className='h-full'>
                         <Document
                             loading={
                                 <div className="flex justify-center">
@@ -202,6 +202,7 @@ const PdfRenderer: FC<PdfRendererProps> = ({ url }) => {
                             {isLoading && renderedScale ? (
                                 <Page
                                     width={width ? width : 1}
+                                    height={height ? height : 1}
                                     pageNumber={currentPage}
                                     scale={scale}
                                     rotate={rotation}
@@ -212,6 +213,7 @@ const PdfRenderer: FC<PdfRendererProps> = ({ url }) => {
                             <Page
                                 className={cn(isLoading ? 'hidden' : '')}
                                 width={width ? width : 1}
+                                height={height ? height : 1}
                                 pageNumber={currentPage}
                                 scale={scale}
                                 rotate={rotation}
