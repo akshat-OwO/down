@@ -40,6 +40,17 @@ export const appRouter = router({
             where: {
                 userId,
             },
+            include: {
+                _count: {
+                    select: {
+                        messages: {
+                            where: {
+                                userId,
+                            },
+                        },
+                    },
+                },
+            },
         });
     }),
     createStripeSession: privateProcedure.mutation(async ({ ctx }) => {
