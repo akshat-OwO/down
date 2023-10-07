@@ -54,7 +54,7 @@ const BilingForm: FC<BilingFormProps> = ({ subscriptionPlan }) => {
                             <strong>{subscriptionPlan.name}</strong> plan.
                         </CardDescription>
                     </CardHeader>
-                    <CardFooter className="flex flex-col items-start space-y-2 md:flex-grow md:justify-between md:space-x-0">
+                    <CardFooter className="flex flex-col items-start space-y-2 md:flex-row md:justify-between md:space-x-0">
                         <Button type="submit">
                             {isLoading ? (
                                 <Loader2 className="mr-4 h-4 w-4 animate-spin" />
@@ -68,7 +68,7 @@ const BilingForm: FC<BilingFormProps> = ({ subscriptionPlan }) => {
                             <p className="rounded-full text-xs font-medium">
                                 {subscriptionPlan.isCanceled
                                     ? 'Your plan will be cancelled on '
-                                    : 'Your plan renews on'}
+                                    : 'Your plan renews on '}
                                 {format(
                                     subscriptionPlan.stripeCurrentPeriodEnd!,
                                     'dd.MM.yyyy'
