@@ -8,6 +8,8 @@ import { OpenAIEmbeddings } from 'langchain/embeddings/openai';
 import { PineconeStore } from 'langchain/vectorstores/pinecone';
 import { NextRequest } from 'next/server';
 
+export const runtime = 'edge';
+
 export const POST = async (req: NextRequest) => {
     const body = await req.json();
 
@@ -66,7 +68,7 @@ export const POST = async (req: NextRequest) => {
         content: msg.text,
     }));
 
-    const response = await openai.chat.completions.create({
+    const response = await openai.createChatCompletion({
         model: 'gpt-3.5-turbo-16k',
         temperature: 0,
         stream: true,
