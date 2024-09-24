@@ -82,7 +82,7 @@ const onUploadComplete = async ({
             });
         }
 
-        const pineconeIndex = pinecone.Index("down");
+        const pineconeIndex = pinecone.Index("down-index");
 
         const embeddings = new OpenAIEmbeddings({
             openAIApiKey: process.env.OPENAI_API_KEY,
