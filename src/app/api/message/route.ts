@@ -44,7 +44,7 @@ export const POST = async (req: NextRequest) => {
         openAIApiKey: process.env.OPENAI_API_KEY,
     });
 
-    const pineconeIndex = pinecone.Index('down');
+    const pineconeIndex = pinecone.Index('down-index');
 
     const vectorStore = await PineconeStore.fromExistingIndex(embeddings, {
         pineconeIndex,
