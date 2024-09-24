@@ -69,7 +69,7 @@ export const POST = async (req: NextRequest) => {
     }));
 
     const response = await openai.createChatCompletion({
-        model: 'meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo',
+        model: 'gpt-4o-mini',
         temperature: 0,
         stream: true,
         messages: [
