@@ -82,7 +82,7 @@ const onUploadComplete = async ({
             });
         }
 
-        const pineconeIndex = pinecone.Index("quickstart");
+        const pineconeIndex = pinecone.Index("down");
 
         const embeddings = new OpenAIEmbeddings({
             openAIApiKey: process.env.OPENAI_API_KEY,
@@ -102,6 +102,7 @@ const onUploadComplete = async ({
             },
         });
     } catch (error) {
+        console.log(error)
         await db.file.update({
             data: {
                 uploadStatus: "FAILED",
